@@ -5,3 +5,18 @@
 * This is a CSS skin for Bungloo that is minimal and responsive.
 
 ![Bungloo CSS theme](Tenterriffic.jpg)
+
+## Installation
+
+### OS X
+
+Copy the Plugin.css file to `~/Library/Application Support/Bungloo/Plugin.css`
+
+Since OS X 10.7 Lion, the `~/Library/` folder is hidden by default. If you want to save your own CSS file, open the Finder and choose Go → Go to folder… and enter `~/Library/Application Support/`, there you can create the Folder Bungloo, if it doesn't exist and copy the plugin file there. You can also open the Library folder by choosing the Library menu item that appear in the Go menu while pressing the Option ⌥ key.
+
+### Linux
+
+The paths for the plugins on Linux are more confortable:
+
+~/.bungloo/Plugin.js
+~/.bungloo/Plugin.css
