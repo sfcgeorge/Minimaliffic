@@ -111,6 +111,12 @@ a {
 #content ol > li[id^="post-"]:first-child .data .from {
   background: #f0f0f0;
 }
+#content ol > li[id^="post-"].mentioned .data .from {
+  background: #ffedb8;
+}
+#content ol > li[id^="post-"].mentioned:first-child .data .from {
+  background: #ffe5a5;
+}
 #content ol.conversation > li[id^="post-"]:hover .data .from {
   display: block;
 }
