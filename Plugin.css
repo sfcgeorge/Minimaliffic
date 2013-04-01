@@ -194,6 +194,9 @@ a {
 #content ol > li[id^="post-"].mentioned h1 a {
 	color: #873c15;
 }
+#content ol > li[id^="post-"].mentioned h1 .reposted_by li a {
+  color: #fff;
+}
 
 #content ol > li[id^="post-"].mentioned aside .ago abbr {
 	color: #ca945d;
