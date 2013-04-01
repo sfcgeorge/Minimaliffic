@@ -65,6 +65,18 @@ a {
   background: -webkit-linear-gradient(bottom, #fff, #f0f0f0);
 }
 
+#content ol > li[id^="post-"].marked::before {
+	content: '';
+  position: absolute;
+  display: block;
+  top: 0;
+  left: -20px;
+  border-top: 20px solid #19a80b;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  z-index: 20;
+}
+
 #content ol > li[id^="post-"] > img.image, header.profile img {
 	margin: 2px;
 	position: absolute;
