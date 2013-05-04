@@ -1,4 +1,14 @@
 $.fx.speeds._default = 250;
+$scroller = $('body');
+
+//Add bar to top that scrolls timeline to top on click
+$(function() {
+  $('body').addClass('top-scroller').prepend('<div id="top-scroller"></div>');
+  $('#sidebar, body').css({ paddingTop: 9 });
+  $('#top-scroller').on('click', function() {
+    $scroller.animate({ scrollTop: 0 });
+  });
+});
 
 //Select posts with click
 $('ol').on('click', 'li:not(a)', function(e) { //Clicking a link doesn't select the post
@@ -10,6 +20,7 @@ $('ol').on('click', 'li:not(a)', function(e) { //Clicking a link doesn't select 
 //Use up and down arrow keys to move selection and page if necessary
 $(document).keydown(function(e) { 
   if (e.keyCode == 38 || e.keyCode == 40) { //Up or Down arrow key
+    e.preventDefault();
     var thus = $('.timeline:visible, .conversation:visible, .mentions:visible').find('.selected'); //Treat each tab separately
     var el = e.keyCode == 38 ? thus.prev() : thus.next();
     if (el.length) {
@@ -17,16 +28,16 @@ $(document).keydown(function(e) {
       thus.removeClass('selected');
       
       //Scrolls page if necessary to keep post in view
-      var elOffset = el.position().top;
-      var currScroll = $('#content').scrollTop();
+      var elOffset = el.offset().top;
+      var currScroll = $scroller.scrollTop();
       var docHeight = $(window).height();
       var elHeight = el.outerHeight(false);
-      $('#content').stop(true); //Forces any previous scrolling to complete imediately
-      if (currScroll > currScroll+elOffset) {
-        $('#content').animate({ scrollTop: currScroll + elOffset }); //Scroll up
+      $scroller.stop(true); //Forces any previous scrolling to complete imediately
+      if (currScroll > elOffset) {
+        $scroller.animate({ scrollTop: elOffset }); //Scroll up
       }
-      else if (elOffset+elHeight > docHeight) {
-        $('#content').animate({ scrollTop: currScroll + elOffset + elHeight - docHeight }); //Scroll down
+      else if (elOffset-currScroll+elHeight > docHeight) {
+        $scroller.animate({ scrollTop: elOffset+elHeight-docHeight }); //Scroll down
       }
     }
     return false;
