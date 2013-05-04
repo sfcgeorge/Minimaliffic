@@ -32,9 +32,10 @@ $(document).keydown(function(e) {
       var currScroll = $scroller.scrollTop();
       var docHeight = $(window).height();
       var elHeight = el.outerHeight(false);
+      var topScrollerHeight = $('#top-scroller').height();
       $scroller.stop(true); //Forces any previous scrolling to complete imediately
-      if (currScroll > elOffset) {
-        $scroller.animate({ scrollTop: elOffset }); //Scroll up
+      if (currScroll > elOffset-topScrollerHeight) {
+        $scroller.animate({ scrollTop: elOffset-topScrollerHeight }); //Scroll up
       }
       else if (elOffset-currScroll+elHeight > docHeight) {
         $scroller.animate({ scrollTop: elOffset+elHeight-docHeight }); //Scroll down
